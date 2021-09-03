@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'corsheaders',
     # custom apps
     'authors',
+    'mainapp',
 ]
 
 MIDDLEWARE = [
@@ -121,7 +122,33 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# AUTH_USER_MODEL = 'authors.Author'
+
 CORS_ALLOWED_ORIGINS = [
-    #"http://127.0.0.1:3000",
+    # "http://127.0.0.1:3000",
     "http://localhost:3000",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ]
+}
+
+
+'DEFAULT_RENDERER_CLASSES': (
+        'djangorestframework_camel_case.render.CamelCaseJSONRenderer',
+        'djangorestframework_camel_case.render.CamelCaseBrowsableAPIRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'djangorestframework_camel_case.parser.CamelCaseFormParser',
+        'djangorestframework_camel_case.parser.CamelCaseMultiPartParser',
+        'djangorestframework_camel_case.parser.CamelCaseJSONParser',
+    )
+
+
+
+
+
+
